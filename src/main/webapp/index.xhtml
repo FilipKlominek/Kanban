@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xsi:schemaLocation="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:body>
+
+    <h1>Tasks</h1>
+    <h3>Create new task</h3>
+    <h:form>
+        <h:inputText value="#{taskBean.newTask}"/>
+        <h:commandButton type="submit" action="#{taskBean.addTask()}" value="Create"/>
+    </h:form>
+    <div style="display: flex">
+        <div style="display: flex; flex-direction: column">
+            <h2>Backlog</h2>
+            <ui:repeat value="#{taskBean.tasks.get(0)}" var="task">
+                <div style="display: flex; flex-direction: column; border: 1px solid gray">
+                    <div>
+                        <h3>#{task.task}</h3>
+                    </div>
+                    <div>
+                        <span>id: #{task.taskId}</span>
+                    </div>
+                    <div>
+                        <h:form>
+                            <h:commandButton type="submit" action="#{taskBean.regressTask(task.taskId)}"
+                                             value="Delete"/>
+                            <h:commandButton type="submit" action="#{taskBean.advanceTask(task.taskId)}"
+                                             value="Advance"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <h2>In Progress</h2>
+            <ui:repeat value="#{taskBean.tasks.get(1)}" var="task">
+                <div style="display: flex; flex-direction: column; border: 1px solid gray">
+                    <div>
+                        <h3>#{task.task}</h3>
+                    </div>
+                    <div>
+                        <span>id: #{task.taskId}</span>
+                    </div>
+                    <div>
+                        <h:form>
+                            <h:commandButton type="submit" action="#{taskBean.regressTask(task.taskId)}"
+                                             value="Regress"/>
+                            <h:commandButton type="submit" action="#{taskBean.advanceTask(task.taskId)}"
+                                             value="Advance"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <h2>In Review</h2>
+            <ui:repeat value="#{taskBean.tasks.get(2)}" var="task">
+                <div style="display: flex; flex-direction: column; border: 1px solid gray">
+                    <div>
+                        <h3>#{task.task}</h3>
+                    </div>
+                    <div>
+                        <span>id: #{task.taskId}</span>
+                    </div>
+                    <div>
+                        <h:form>
+                            <h:commandButton type="submit" action="#{taskBean.regressTask(task.taskId)}"
+                                             value="Regress"/>
+                            <h:commandButton type="submit" action="#{taskBean.advanceTask(task.taskId)}"
+                                             value="Advance"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <h2>Test</h2>
+            <ui:repeat value="#{taskBean.tasks.get(3)}" var="task">
+                <div style="display: flex; flex-direction: column; border: 1px solid gray">
+                    <div>
+                        <h3>#{task.task}</h3>
+                    </div>
+                    <div>
+                        <span>id: #{task.taskId}</span>
+                    </div>
+                    <div>
+                        <h:form>
+                            <h:commandButton type="submit" action="#{taskBean.regressTask(task.taskId)}"
+                                             value="Regress"/>
+                            <h:commandButton type="submit" action="#{taskBean.advanceTask(task.taskId)}"
+                                             value="Advance"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <h2>Finished</h2>
+            <ui:repeat value="#{taskBean.tasks.get(4)}" var="task">
+                <div style="display: flex; flex-direction: column; border: 1px solid gray">
+                    <div>
+                        <h3>#{task.task}</h3>
+                    </div>
+                    <div>
+                        <span>id: #{task.taskId}</span>
+                    </div>
+                    <div>
+                        <h:form>
+                            <h:commandButton type="submit" action="#{taskBean.regressTask(task.taskId)}"
+                                             value="Regress"/>
+                            <h:commandButton type="submit" action="#{taskBean.advanceTask(task.taskId)}"
+                                             value="Complete"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+    </div>
+</h:body>
+</html>
